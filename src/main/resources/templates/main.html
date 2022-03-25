@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>All offers</title>
+</head>
+<body>
+<h2 >This is all offers</h2>
+
+<table th:border="2">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Offer</th>
+        <th>Price</th>
+        <th>Date</th>
+        <th>Contact id</th>
+        <th>Contact info</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="entry, stat : ${map}">
+        <td th:text="${stat.index + 1}">1</td>
+        <td th:text="${entry.key.offerInfo}">Offer</td>
+        <td th:text="${entry.key.priceForSell}">Price</td>
+        <td th:text="${entry.key.date}">Date</td>
+        <td th:text="${entry.key.userId}">Contact id</td>
+        <td>
+            <table>
+                <tr th:each="user : ${entry.value}">
+                    <td th:text="${user.contactInfo}">Contact info</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+    </table>
+</body>
+</html>
